@@ -1,4 +1,3 @@
-import 'package:b_wallet/config/themes/theme.dart';
 import 'package:flutter/material.dart';
 
 void main() {
