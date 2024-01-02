@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
- package = "com.learn.bwallet">
+ package = "com.learn.b_wallet">
     <application
         android:label="b_wallet"
         android:name="${applicationName}"
