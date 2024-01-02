@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "973525806711",
+    "project_id": "b-wallet-128cb",
+    "storage_bucket": "b-wallet-128cb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973525806711:android:e48914376714745a482072",
+        "android_client_info": {
+          "package_name": "com.example.b_wallet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhffyqyNAaA2bR98kJI42b8RnHs1lsXMA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973525806711:android:ff5da9ee84b16563482072",
+        "android_client_info": {
+          "package_name": "com.learn.b_wallet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBhffyqyNAaA2bR98kJI42b8RnHs1lsXMA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
