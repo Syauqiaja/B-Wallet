@@ -2,7 +2,7 @@ import 'package:b_wallet/config/themes/colors.dart';
 import 'package:b_wallet/config/themes/text_style.dart';
 import 'package:flutter/material.dart';
 
-SnackBar snackbarOtpError = SnackBar(
+SnackBar snackbarOtpError(String textToShow) => SnackBar(
   content: Row(
     children: [
       const Icon(
@@ -11,7 +11,7 @@ SnackBar snackbarOtpError = SnackBar(
       ),
       const SizedBox(width: 12,),
       Text(
-        'Your OTP code is invalid.',
+        textToShow,
         style: AppTextStyle.regular_16.copyWith(color: AppColors.white),
       )
     ],

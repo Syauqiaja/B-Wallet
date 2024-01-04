@@ -4,6 +4,7 @@ import 'package:b_wallet/features/home/presentation/widgets/logo_container.dart'
 import 'package:b_wallet/features/home/presentation/widgets/pattern_background.dart';
 import 'package:b_wallet/features/home/presentation/widgets/sign_in_form.dart';
 import 'package:b_wallet/features/home/presentation/widgets/sign_up_form.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -135,7 +136,7 @@ class SplashScreenState extends State<SplashScreen> with SingleTickerProviderSta
                     thumbVisibility: true,
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
-                      child: SignUpForm()
+                      child: SignInForm()
                     ),
                   ),
                 ),

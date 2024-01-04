@@ -34,7 +34,7 @@ class _OtpScreenState extends State<OtpScreen> {
   }
 
   void submitString(){
-    ScaffoldMessenger.of(context).showSnackBar(snackbarOtpError);
+    ScaffoldMessenger.of(context).showSnackBar(snackbarOtpError('Your OTP code is invalid.'));
   }
 
   @override

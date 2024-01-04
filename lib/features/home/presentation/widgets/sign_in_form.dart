@@ -1,5 +1,8 @@
 import 'package:b_wallet/config/themes/colors.dart';
 import 'package:b_wallet/config/themes/text_style.dart';
+import 'package:b_wallet/core/utils/form_validator.dart';
+import 'package:b_wallet/features/home/presentation/widgets/snackbar_otp_error.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +16,14 @@ class SignInForm extends StatefulWidget {
 class SignInFormState extends State<SignInForm> {
   bool _passVisible = false;
 
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 44),
         child: Column(
@@ -34,8 +42,10 @@ class SignInFormState extends State<SignInForm> {
                 labelText: "Email/Phone",
                 hintText: "Enter your email or phone number"
               ),
+              controller: _emailController,
+              validator: (value) => FormValidator.validateEmail(value),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             TextFormField(
               obscureText: !_passVisible,
               decoration: InputDecoration(
@@ -50,10 +60,18 @@ class SignInFormState extends State<SignInForm> {
                   ),
                 )
               ),
+              controller: _passController,
+              validator: (value) => FormValidator.validatePassword(value),
             ),
             SizedBox(height: 20,),
             ElevatedButton(
-              onPressed: (){}, 
+              onPressed: (){
+                if(_formKey.currentState!.validate()){
+                  if(kDebugMode) print("Processing Data");
+                }else{
+                  ScaffoldMessenger.of(context).showSnackBar(snackbarOtpError('Please fill in all required fields'));
+                }
+              }, 
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.orange,
                 padding: EdgeInsets.symmetric(vertical: 16),
