@@ -1,10 +1,13 @@
 import 'package:b_wallet/config/themes/colors.dart';
 import 'package:b_wallet/config/themes/text_style.dart';
 import 'package:b_wallet/core/utils/form_validator.dart';
+import 'package:b_wallet/features/home/presentation/bloc/auth_bloc/auth_bloc.dart';
+import 'package:b_wallet/features/home/presentation/bloc/splash_bloc/splash_bloc.dart';
 import 'package:b_wallet/features/home/presentation/widgets/snackbar_otp_error.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({super.key});
@@ -63,18 +66,20 @@ class SignInFormState extends State<SignInForm> {
               controller: _passController,
               validator: (value) => FormValidator.validatePassword(value),
             ),
-            SizedBox(height: 20,),
+            const SizedBox(height: 20,),
             ElevatedButton(
               onPressed: (){
                 if(_formKey.currentState!.validate()){
-                  if(kDebugMode) print("Processing Data");
+                  context.read<AuthBloc>().add(AuthLoginRequested(
+                    email: _emailController.text, password: _passController.text
+                  ));
                 }else{
                   ScaffoldMessenger.of(context).showSnackBar(snackbarOtpError('Please fill in all required fields'));
                 }
               }, 
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.orange,
-                padding: EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)
                 )
@@ -104,7 +109,10 @@ class SignInFormState extends State<SignInForm> {
                   ),
                   TextSpan(
                     text: "Sign Up",
-                    style: AppTextStyle.semibold_14.copyWith(color: AppColors.orange)
+                    style: AppTextStyle.semibold_14.copyWith(color: AppColors.orange),
+                    recognizer: TapGestureRecognizer()..onTap = (){
+                      context.read<SplashBloc>().add(SplashRequireRegister());
+                    }
                   )
                 ]
               )

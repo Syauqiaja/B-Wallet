@@ -11,10 +11,13 @@ final class AuthLoginRequested extends AuthEvent{
 }
 
 final class AuthRegisterRequested extends AuthEvent{
-  final UserModel userModel;
+  final String email;
   final String password;
 
-  AuthRegisterRequested({required this.userModel, required this.password});
+  AuthRegisterRequested({
+    required this.email, 
+    required this.password,
+  });
 
 }
 
@@ -28,3 +31,5 @@ final class AuthSendOTP extends AuthEvent{
 final class AuthResendTOP extends AuthEvent{}
 
 final class AuthLogoutRequested extends AuthEvent{}
+
+final class AuthRequestSession extends AuthEvent{}

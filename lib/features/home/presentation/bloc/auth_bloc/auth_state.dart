@@ -25,3 +25,4 @@ final class AuthRegisterSuccess extends AuthState{
 
 final class AuthOTPSended extends AuthState{}
 final class AuthOTPFailure extends AuthState{}
+final class AuthNotLogged extends AuthState{}
